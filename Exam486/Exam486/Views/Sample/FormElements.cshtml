@@ -1106,14 +1106,15 @@
 @section ScriptFooter
 {
     <script type="text/javascript">
-        $(function() {
-            $('#id-disable-check').on('click', function() {
+        $(function () {
+            $('#id-disable-check').on('click', function () {
                 var inp = $('#form-input-readonly').get(0);
                 if (inp.hasAttribute('disabled')) {
                     inp.setAttribute('readonly', 'true');
                     inp.removeAttribute('disabled');
                     inp.value = "This text field is readonly!";
-                } else {
+                }
+                else {
                     inp.setAttribute('disabled', 'disabled');
                     inp.removeAttribute('readonly');
                     inp.value = "This text field is disabled!";
@@ -1127,7 +1128,7 @@
             $('[data-rel=popover]').popover({ container: 'body' });
 
             $('textarea[class*=autosize]').autosize({ append: "\n" });
-            $('textarea[class*=limited]').each(function() {
+            $('textarea[class*=limited]').each(function () {
                 var limit = parseInt($(this).attr('data-maxlength')) || 100;
                 $(this).inputlimiter({
                     "limit": limit,
@@ -1140,7 +1141,8 @@
             $('.input-mask-date').mask('99/99/9999');
             $('.input-mask-phone').mask('(999) 999-9999');
             $('.input-mask-eyescript').mask('~9.99 ~9.99 999');
-            $(".input-mask-product").mask("a*-999-a999", { placeholder: " ", completed: function() { alert("You typed the following: " + this.val()); } });
+            $(".input-mask-product").mask("a*-999-a999", { placeholder: " ", completed: function () { alert("You typed the following: " + this.val()); } });
+
 
 
             $("#input-size-slider").css('width', '200px').slider({
@@ -1149,7 +1151,7 @@
                 min: 1,
                 max: 6,
                 step: 1,
-                slide: function(event, ui) {
+                slide: function (event, ui) {
                     var sizing = ['', 'input-mini', 'input-small', 'input-medium', 'input-large', 'input-xlarge', 'input-xxlarge'];
                     var val = parseInt(ui.value);
                     $('#form-field-4').attr('class', sizing[val]).val('.' + sizing[val]);
@@ -1162,7 +1164,7 @@
                 min: 1,
                 max: 11,
                 step: 1,
-                slide: function(event, ui) {
+                slide: function (event, ui) {
                     var val = parseInt(ui.value);
                     $('#form-field-5').attr('class', 'span' + val).val('.span' + val).next().attr('class', 'span' + (12 - val)).val('.span' + (12 - val));
                 }
@@ -1175,7 +1177,7 @@
                 min: 0,
                 max: 100,
                 values: [17, 67],
-                slide: function(event, ui) {
+                slide: function (event, ui) {
                     var val = ui.values[$(ui.handle).index() - 1] + "";
 
                     if (!ui.handle.firstChild) {
@@ -1183,7 +1185,7 @@
                     }
                     $(ui.handle.firstChild).show().children().eq(1).text(val);
                 }
-            }).find('a').on('blur', function() {
+            }).find('a').on('blur', function () {
                 $(this.firstChild).hide();
             });
 
@@ -1194,13 +1196,14 @@
                 value: 2
             });
 
-            $("#eq > span").css({ width: '90%', 'float': 'left', margin: '15px' }).each(function() {
+            $("#eq > span").css({ width: '90%', 'float': 'left', margin: '15px' }).each(function () {
                 // read initial values from markup and remove that
                 var value = parseInt($(this).text(), 10);
                 $(this).empty().slider({
                     value: value,
                     range: "min",
                     animate: true
+
                 });
             });
 
@@ -1227,14 +1230,15 @@
                 thumbnail: 'small'
                 //,icon_remove:null//set null, to hide remove/reset button
                 /**,before_change:function(files, dropped) {
-						//Check an example below
-						//or examples/file-upload.html
-						return true;
-					}*/
+                    //Check an example below
+                    //or examples/file-upload.html
+                    return true;
+                }*/
                 /**,before_remove : function() {
-						return true;
-					}*/,
-                preview_error: function(filename, error_code) {
+                    return true;
+                }*/
+                ,
+                preview_error: function (filename, error_code) {
                     //name of the file that failed
                     //error_code values
                     //1 = 'FILE_LOAD_FAILED',
@@ -1242,14 +1246,15 @@
                     //3 = 'THUMBNAIL_FAILED'
                     //alert(error_code);
                 }
-            }).on('change', function() {
+
+            }).on('change', function () {
                 //console.log($(this).data('ace_input_files'));
                 //console.log($(this).data('ace_input_method'));
             });
 
 
             //dynamically change allowed formats by changing before_change callback function
-            $('#id-file-format').removeAttr('checked').on('change', function() {
+            $('#id-file-format').removeAttr('checked').on('change', function () {
                 var before_change;
                 var btn_choose;
                 var no_icon;
@@ -1276,7 +1281,8 @@
 
                         return allowed_files;
                     };
-                } else {
+                }
+                else {
                     btn_choose = "Drop files here or click to choose";
                     no_icon = "icon-cloud-upload";
                     before_change = function(files, dropped) {
@@ -1288,20 +1294,18 @@
                 file_input.ace_file_input('reset_input');
             });
 
-
             $('#spinner1').ace_spinner({ value: 0, min: 0, max: 200, step: 10, btn_up_class: 'btn-info', btn_down_class: 'btn-info' })
-                .on('change', function() {
+                .on('change', function () {
                     //alert(this.value)
                 });
             $('#spinner2').ace_spinner({ value: 0, min: 0, max: 10000, step: 100, icon_up: 'icon-caret-up', icon_down: 'icon-caret-down' });
             $('#spinner3').ace_spinner({ value: 0, min: -100, max: 100, step: 10, icon_up: 'icon-plus', icon_down: 'icon-minus', btn_up_class: 'btn-success', btn_down_class: 'btn-danger' });
 
-
-            $('.date-picker').datepicker().next().on(ace.click_event, function() {
+            $('.date-picker').datepicker().next().on(ace.click_event, function () {
                 $(this).prev().focus();
             });
-            
-            $('#id-date-range-picker-1').daterangepicker().prev().on(ace.click_event, function() {
+
+            $('#id-date-range-picker-1').daterangepicker().prev().on(ace.click_event, function () {
                 $(this).next().focus();
             });
 
@@ -1328,6 +1332,8 @@
                 //$('#form-field-tags').autosize({append: "\n"});
             }
 
+
+            /////////
             $('#modal-form input[type=file]').ace_file_input({
                 style: 'well',
                 btn_choose: 'Drop files here or click to choose',
@@ -1347,14 +1353,13 @@
                     $(this).find('.chzn-search input').css('width', '200px');
                 });
             });
-            
             /**
-				//or you can activate the chosen plugin after modal is shown
-				//this way select element has a width now and chosen works as expected
-				$('#modal-form').on('shown', function () {
-					$(this).find('.modal-chosen').chosen();
-				})
-				*/
+            //or you can activate the chosen plugin after modal is shown
+            //this way select element has a width now and chosen works as expected
+            $('#modal-form').on('shown', function () {
+                $(this).find('.modal-chosen').chosen();
+            })
+            */
 
         });
     </script>

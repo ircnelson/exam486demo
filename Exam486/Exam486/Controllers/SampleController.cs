@@ -42,5 +42,40 @@ namespace Exam486.Controllers
         {
             return View();
         }
+
+        public ActionResult WizardValidation()
+        {
+            return View();
+        }
+
+        public ActionResult Editors()
+        {
+            return View();
+        }
+
+        public ActionResult Widgets()
+        {
+            return View();
+        }
+
+        public ActionResult Calendar()
+        {
+            return View();
+        }
+
+        public ActionResult UserProfile()
+        {
+            return View();
+        }
+
+        public ActionResult PriceTables()
+        {
+            return View();
+        }
+
+        public ActionResult ForceError500()
+        {
+            throw new Exception();
+        }
     }
 }
